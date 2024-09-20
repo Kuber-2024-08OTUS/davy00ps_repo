@@ -1,0 +1,28 @@
+1. Run minikube
+minikube start --nodes 2 --driver=virtualbox
+2. Labeling worker node
+k label node/minikube-m02 homework=true
+3. NS
+k create -f namespace.yaml
+k config set-context --current --namespace=homework
+2. SC, PV, PVC
+k create -f sc.yaml; k create -f pv-local.yaml && k create pvc-local.yaml
+3. Deployments
+k create -f main.yaml && k create -f test.yaml
+4. Check services
+minikube service list
+5. Call NGINX with curl
+curl  http://192.168.59.103:32733 (your example)
+6. Delete test pod invoking preStop hook and trigerring liveness probe repeatedly restart all containers.
+k delete pod/nginx-test-xxxxxxxx
+7. Call nginx-test service to check absense of index.html
+curl http://192.168.59.103:30256 (your example)
+8. Check /homework folder of any pod
+k exec -it name_of_pod -- sh -c 'ls -la /homework'
+9. Check below with kube cluster
+minikube ssh in minikube-m02
+ls -la /data
+10. Update new version of image
+k set image deployment/nginx nginx=nginx:1.25-alpine
+k set image deployment/nginx nginx=nginx:1.27-alpine
+ 
