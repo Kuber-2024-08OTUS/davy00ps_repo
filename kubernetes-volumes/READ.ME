@@ -1,0 +1,30 @@
+### Run minikube ###
+minikube start
+
+### Labeling worker node ###
+k label node/minikube homework=true
+
+### Crate namespace ###
+k create -f namespace.yaml
+k config set-context --current --namespace=homework
+
+### Create a new SC and PVC to it ###
+k create -f storageClass.yaml
+k create -f pvc.yaml
+
+### Create deployments/service/ingress ###
+k create -f deployment.yaml && k create -f service.yaml \
+k create -f ingress.yaml
+
+### Create ingress ###
+minikube addon enable ingress
+k create -f ingress.yaml
+echo "$(minikube ip) homework.otus" >> /etc/hosts
+curl --resolve "homework.otus:80:$(minikube ip)" \
+-i http://homework.otus
+curl http://homework.otus/index.html
+curl http://homework.otus/conf/file
+
+
+
+ 
