@@ -1,0 +1,31 @@
+### Run minikube ###
+minikube start --nodes 2 --driver=virtualbox
+
+### Labeling worker node ###
+k label node/minikube-m02 homework=true node-role.kubernetes.io/worker=worker
+
+### Install ingress ###
+minikube addons enable ingress
+
+### Crate namespace ###
+k create -f namespace.yaml
+k config set-context --current --namespace=homework
+
+### Create SC/PV/PVC ###
+k create -f sc.yaml; \
+k create -f pv-local.yaml; \
+k create -f pvc-local.yaml
+
+### Create deployments/service ###
+k create -f nginx.yaml && k create -f service.yaml
+
+### Create ingress ###
+k create -f ingress.yaml
+echo "$(minikube ip) homework.otus" >> \
+/cygdrive/c/Windows/System32/drivers/etc/hosts
+curl http://homework.otus/index.html
+curl http://homework.otus/homepage/
+
+
+
+ 
