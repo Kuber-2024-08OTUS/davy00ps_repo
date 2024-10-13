@@ -1,0 +1,18 @@
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /home/mister/.minikube/ca.crt
+    server: https://127.0.0.1:32776
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    namespace: homework
+    user: cd
+  name: minikube
+current-context: minikube
+kind: Config
+users:
+- name: cd
+  user:
+    token: eyJhbGciOiJSUzI1NiIsImtpZCI6IlZwT3JYREdxUDdUSG1zclhhQmNzRjMtU2djWkFobW1CVzhMbmFEbTNNcDAifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNzI4ODc2MDQ4LCJpYXQiOjE3Mjg3ODk2NDgsImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwianRpIjoiZTgxMWI2NTAtYmNhNC00Y2MzLTgxNzQtZGMzYTY0Y2RjMDEyIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJob21ld29yayIsInNlcnZpY2VhY2NvdW50Ijp7Im5hbWUiOiJjZCIsInVpZCI6ImRiZDczNzc1LTYzNmEtNDA3NS04ZWEyLWU4M2I5NzE0ODhiYyJ9fSwibmJmIjoxNzI4Nzg5NjQ4LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6aG9tZXdvcms6Y2QifQ.FALKVs3F3eRICo-J-RIMCq8D2-i2zqzRl7y1qJPQ5-VtDhd3-F5TbQPjp_v_Q-XZUBDeyreLsZCFBP8OSetRtuFtlSDTHP2lugwZkrwj5U-BgKF8SEeHKPCR16-TUP2-kCNM6qRcwYDKAGg2VEkutpKcHwQqPYRZC0sca-8bC04bpiZE0lJW0FuyffrWcTdqfJzf9lk99DgPkJWrTo8JN22pesJwUJjR2DGv3Tvrkzk1UXOZjr2WUpi9luAXS3PkHJmAWn2f5VPQBZ25R2EeUFX0L7PH3lAvH2XstN0TMeyECznzaihOj0eydNGyT4o3wddu6AErc7pfoQ_Da6REkg
